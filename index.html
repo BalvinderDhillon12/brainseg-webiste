@@ -354,7 +354,7 @@
         }
         
         .star {
-            color: #FFD700;
+            color: #A0AEC0; /* Default gray color */
             font-size: 2rem;
             cursor: pointer;
             transition: transform 0.2s ease;
@@ -500,7 +500,7 @@
         <section id="ratings">
             <div class="container">
                 <h2>Rate Our Models</h2>
-                <p>We value your feedback on our brain segmentation models. Please rate each model and share your experiences to help us improve.</p>
+                <p>We value your feedback on our brain segmentation models. Please rate each model and share your experiences to help us improve our research.</p>
                 
                 <div class="rating-models">
                     <div class="model-card">
@@ -665,7 +665,7 @@
                                 Given the inherent variability in MRI scan quality, how does the model handle potential artifacts or noise in the input data?
                             </div>
                             <div class="faq-answer">
-                                The integration of attention mechanisms and robust feature extraction layers in the i-UNet enables it to mitigate the effects of noise and artifacts. Additionally, data augmentation techniques during training simulate real-world variability, helping the model generalize better when confronted with imperfect data.
+                                The integration of attention mechanisms and robust feature extraction layers in the i-UNet enables it to mitigate the effects of noise and artefacts. Additionally, data augmentation techniques during training simulate real-world variability, helping the model generalise better when confronted with imperfect data.
                             </div>
                         </div>
                     </div>
@@ -679,7 +679,7 @@
                                 Considering the training was performed on a MacBook Air M1 with limited resources, what strategies are in place to scale the i-UNet for industrial or clinical applications?
                             </div>
                             <div class="faq-answer">
-                                While initial development was conducted on a student-based setup, the i-UNet is inherently scalable. Plans include leveraging high-performance computing environments, cloud-based GPU clusters, and optimized inference pipelines to process larger datasets and meet real-time clinical demands without compromising on performance.
+                                While initial development was conducted on a student-based setup, the i-UNet is inherently scalable. Plans include leveraging high-performance computing environments, cloud-based GPU clusters, and optimised inference pipelines to process larger datasets and meet real-time clinical demands without compromising on performance.
                             </div>
                         </div>
                         
@@ -697,7 +697,7 @@
                                 What plans are in place for implementing user-friendly interfaces (such as Grad-CAM visualizations) that allow clinicians to interpret the model's decision-making process and build trust in its outputs?
                             </div>
                             <div class="faq-answer">
-                                We are developing intuitive visualization tools like Grad-CAM overlays that will be integrated into the segmentation platform. These interfaces will provide clear, interpretable insights into the model's decision-making process, thereby helping clinicians understand and trust the automated outcomes.
+                                We are developing intuitive visualisation tools like Grad-CAM overlays that will be integrated into the segmentation platform. These interfaces will provide clear, interpretable insights into the model's decision-making process, thereby helping clinicians understand and trust the automated outcomes.
                             </div>
                         </div>
                         
@@ -738,7 +738,7 @@
                                 What are the greater goals of BrainSeg AI and how can it be integrated with clinical care to improve patient outcomes?
                             </div>
                             <div class="faq-answer">
-                                This software provides a basic framework for AI based segmentation of brain MRIs, however, the greater goal is to have a singular software that aids medical image segmentation, diagnosis, prognosis, and treatment planning for all data inputs. Integration within the clinic and the user-friendliness of such an application is paramount to its success, meeting users at their level and allowing for improved clinical access in low-resource settings.
+                                This software provides a basic framework for AI-based segmentation of brain MRIs, however, the greater goal is to have a singular software that aids medical image segmentation, diagnosis, prognosis, and treatment planning for all data inputs. Integration within the clinic and the user-friendliness of such an application is paramount to its success, meeting users at their level and allowing for improved clinical access in low-resource settings.
                             </div>
                         </div>
                         
@@ -746,3 +746,160 @@
                             <div class="faq-question">
                                 What are some potential implications for the fields of minimally invasive surgery and soft robotics?
                             </div>
+                            <div class="faq-answer">
+                                Future work for BrainSeg AI includes increasing its capabilities to segment specific regions and tumours in the brain, allowing for surgical intervention planning supported by simulations on the models. Models produced by the i-Unet can be used to train medical robots for minimally invasive surgery and calibrate pressure forces at the end effectors.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                What are our reasons for creating our own network over using nnUnet and other deep learning models?
+                            </div>
+                            <div class="faq-answer">
+                                While nnUnet has shown good performance for 3D segmentation, our model is more user friendly because it has less intensive GPU and RAM requirements. Its generalisation can also be developed further for application in brain tumour analysis or for creating phantoms for medical training.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center;">Brain<span>Seg</span> AI</div>
+            <div class="team-members">
+                A research project by Balvinder Kaur Dhillon, Róza Rebeka Somogyi, Abbas Abdirashid Mahmud Yusuf, Vivek Kesava Christopher Kindell, Kirijan Nalvelnathan
+            </div>
+            <div class="contact-info">
+                <p>Supervised by Professor Zion Tse & Dr. S.M.Hadi Sadati</p>
+                <p>© 2025 BrainSeg Research Team</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Three.js setup for spinning brain
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create scene
+            const scene = new THREE.Scene();
+            
+            // Create camera
+            const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+            camera.position.z = 5;
+            
+            // Create renderer
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(250, 250);
+            renderer.setClearColor(0x000000, 0);
+            
+            // Add renderer to DOM
+            const container = document.getElementById('brain-model');
+            container.appendChild(renderer.domElement);
+            
+            // Create brain geometry
+            const brainGeometry = new THREE.SphereGeometry(1.5, 32, 32);
+            
+            // Create brain material with purple color and slight transparency
+            const brainMaterial = new THREE.MeshPhongMaterial({
+                color: 0x6B46C1,
+                transparent: true,
+                opacity: 0.9,
+                shininess: 100
+            });
+            
+            // Create brain mesh
+            const brain = new THREE.Mesh(brainGeometry, brainMaterial);
+            
+            // Add complexity to brain to make it look less like a perfect sphere
+            const bumps = 10;
+            for (let i = 0; i < bumps; i++) {
+                const bumpGeometry = new THREE.SphereGeometry(0.25 + Math.random() * 0.2, 16, 16);
+                const bump = new THREE.Mesh(bumpGeometry, brainMaterial);
+                
+                const theta = Math.random() * Math.PI * 2;
+                const phi = Math.acos(2 * Math.random() - 1);
+                
+                const x = 1.2 * Math.sin(phi) * Math.cos(theta);
+                const y = 1.2 * Math.sin(phi) * Math.sin(theta);
+                const z = 1.2 * Math.cos(phi);
+                
+                bump.position.set(x, y, z);
+                brain.add(bump);
+            }
+            
+            // Add brain to scene
+            scene.add(brain);
+            
+            // Add some sulci (brain folds) with curve geometries
+            const curveCount = 8;
+            for (let i = 0; i < curveCount; i++) {
+                // Create a random curve on the surface of the brain
+                const points = [];
+                const segments = 10;
+                const radius = 1.6;
+                
+                const startAngle = Math.random() * Math.PI * 2;
+                const angleWidth = (0.5 + Math.random() * 0.5) * Math.PI;
+                
+                for (let j = 0; j <= segments; j++) {
+                    const angle = startAngle + (j / segments) * angleWidth;
+                    const x = radius * Math.sin(angle) * Math.cos(j/segments * Math.PI);
+                    const y = radius * Math.sin(angle) * Math.sin(j/segments * Math.PI);
+                    const z = radius * Math.cos(angle);
+                    
+                    points.push(new THREE.Vector3(x, y, z));
+                }
+                
+                const curve = new THREE.CatmullRomCurve3(points);
+                const tubeGeometry = new THREE.TubeGeometry(curve, 20, 0.05, 8, false);
+                const tubeMaterial = new THREE.MeshPhongMaterial({
+                    color: 0x553C9A,
+                    shininess: 50
+                });
+                
+                const tube = new THREE.Mesh(tubeGeometry, tubeMaterial);
+                scene.add(tube);
+            }
+            
+            // Add lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            const light1 = new THREE.DirectionalLight(0xffffff, 0.8);
+            light1.position.set(5, 5, 5);
+            scene.add(light1);
+            
+            const light2 = new THREE.DirectionalLight(0x6B46C1, 0.5);
+            light2.position.set(-5, -5, -5);
+            scene.add(light2);
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Rotate brain
+                brain.rotation.y += 0.005;
+                brain.rotation.x += 0.002;
+                brain.rotation.z += 0.001;
+                
+                // Render scene
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                // Keep aspect ratio 1:1 for the brain
+                const size = Math.min(250, window.innerWidth * 0.8);
+                renderer.setSize(size, size);
+            });
+        });
+    </script>
+</body>
+</html>
+    </script>
+</body>
+</html>
+
+
