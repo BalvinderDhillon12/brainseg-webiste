@@ -561,7 +561,7 @@
                 What specific modifications were made to the U-Net to create the i-UNet, and how do these changes directly address the limitations of the standard model?
               </div>
               <div class="faq-answer">
-                The i-UNet builds on the classic U-Net by integrating manual attention mechanisms and a ResNet50 backbone. These enhancements help the model focus on critical regions during segmentation and improve feature extraction, which reduces noise and enhances boundary delineation. In essence, these modifications tackle issues like overfitting and loss of spatial detail that are common in standard U-Net models.
+                The i-UNet builds on the classic U-Net by integrating manual attention mechanisms and a ResNet50 backbone. These enhancements help the model focus on critical regions during segmentation and improve feature extraction, which reduces noise and enhances boundary delineation. In essence, these modifications tackle issues like overfitting and loss of spatial detail that are common in standard U-Net models. In the future, the team is looking into the addition of lightweight transformers for better boundary definition identification.
               </div>
             </div>
             
@@ -570,7 +570,7 @@
                 How does the inclusion of attention mechanisms enhance the model's ability to capture global semantic information, and can you provide quantitative evidence supporting this improvement?
               </div>
               <div class="faq-answer">
-                The attention mechanisms allow the model to weigh significant features more effectively, ensuring that global and contextual information is prioritized. Quantitatively, this is evidenced by an improved Dice score (0.99 for i-UNet compared to 0.98 for the conventional U-Net) and a dramatic reduction in final loss (0.01 versus 0.49), highlighting a more robust and accurate segmentation process.
+                The attention mechanisms allow the model to weigh significant features more effectively, ensuring that global and contextual information are prioritised. Quantitatively, this is evidenced by an improved Dice score (0.99 for i-UNet compared to 0.98 for the conventional U-Net) and a dramatic reduction in final loss (0.01 versus 0.49), highlighting a more robust and accurate segmentation process.
               </div>
             </div>
             
@@ -579,7 +579,7 @@
                 Which loss function was used, and what explains such a significant disparity in convergence between i-UNet and the conventional U-Net?
               </div>
               <div class="faq-answer">
-                We employed a combined loss function that leverages both cross-entropy and Dice loss. This dual approach addresses class imbalance and emphasizes segmentation accuracy. The i-UNet's architectural enhancements, especially the attention mechanisms, allow it to optimize these losses more effectively, resulting in a much faster and stable convergence compared to the standard U-Net.
+                We employed a combined loss function that leverages both cross-entropy and Dice loss. This dual approach addresses class imbalance and emphasises segmentation accuracy. The i-UNet's architectural enhancements allow it to optimise these losses more effectively, resulting in a much faster and stable convergence compared to the standard U-Net.
               </div>
             </div>
             
@@ -588,7 +588,7 @@
                 While the Dice score improved from 0.98 to 0.99, is this marginal increase statistically significant, and does it translate into a clinically meaningful improvement?
               </div>
               <div class="faq-answer">
-                Even small improvements in the Dice score can be clinically significant, particularly when precise boundary delineation is critical. Our repeated cross-validation confirms that this improvement is consistent, ensuring that even marginal gains in segmentation accuracy can enhance clinical decision-making, especially in delicate brain imaging scenarios.
+                Even small improvements in the Dice score can be clinically significant, particularly when precise boundary delineation is critical. Our repeated cross-validation with student expert manual segementation confirms that this improvement is consistent, ensuring that even marginal gains in segmentation accuracy can enhance clinical decision-making, especially in delicate brain imaging scenarios.
               </div>
             </div>
             
@@ -597,7 +597,7 @@
                 How were the evaluation metrics (Dice score and Hausdorff distance) computed, and were techniques like cross-validation or an independent test set employed to ensure robust performance?
               </div>
               <div class="faq-answer">
-                Standard evaluation protocols were followed, with metrics computed across both training and validation datasets. We utilized cross-validation to confirm the model's generalizability and ensure that the performance improvements were not limited to a particular data split, thereby bolstering confidence in the i-UNet's robustness.
+                Standard evaluation protocols were followed, with metrics computed across both training and validation datasets. We utilised 15% testing of the dataset to confirm the model's generalisability and ensure that the performance improvements were not limited.
               </div>
             </div>
           </div>
@@ -611,7 +611,7 @@
                 How representative is the SynthStrip dataset of real-world clinical MRI T1 scans, and what are its limitations in terms of patient demographics and scan variability?
               </div>
               <div class="faq-answer">
-                The SynthStrip dataset offers high-quality, controlled images that are ideal for initial model development. However, it does have limitations: it may not fully capture the diverse range of patient demographics, scanner types, and imaging protocols found in actual clinical settings. Recognizing these limitations, we plan to validate the model further using more heterogeneous datasets.
+                The SynthStrip dataset offers high-quality, controlled images that are ideal for initial model development. However, it does have limitations: it may not fully capture the diverse range of patient demographics, scanner types, and imaging protocols found in actual clinical settings. 
               </div>
             </div>
             
@@ -620,7 +620,7 @@
                 Have you considered validating the model on additional datasets or real clinical data to ensure that the performance improvements observed are generalizable?
               </div>
               <div class="faq-answer">
-                Absolutely. Future work involves validating the i-UNet on a broader spectrum of clinical datasets. Collaborations with healthcare institutions are planned to access real-world imaging data, ensuring that our model's performance improvements hold true outside controlled experimental conditions.
+                Yes. Future work involves validating the i-UNet on a broader spectrum of clinical datasets and imaging modalities. Collaborations with healthcare institutions are planned to access real-world imaging data, ensuring that our model's performance improvements hold true outside our controlled conditions and can easily be implemented into the clinical workflow.
               </div>
             </div>
             
@@ -629,7 +629,7 @@
                 What preprocessing steps were applied to the dataset, and how might these influence the segmentation outcomes compared to raw clinical scans?
               </div>
               <div class="faq-answer">
-                Preprocessing techniques such as normalization, skull-stripping, and bias correction were applied to improve image consistency and quality. While these steps enhance the training process, they may reduce some real-world variability. Our ongoing research will test the model on less preprocessed, raw scans to better simulate clinical conditions.
+                Preprocessing techniques such as normalisation and resampling were applied to improve image consistency and quality. While these steps enhance the training process, they may reduce some real-world variability. In our future work, we intend to test our algorithm with sparse and low quality datasets.
               </div>
             </div>
             
@@ -652,7 +652,7 @@
                 Considering the training was performed on a MacBook Air M1 with limited resources, what strategies are in place to scale the i-UNet for industrial or clinical applications?
               </div>
               <div class="faq-answer">
-                While initial development was conducted on a student-based setup, the i-UNet is inherently scalable. Plans include leveraging high-performance computing environments, cloud-based GPU clusters, and optimised inference pipelines to process larger datasets and meet real-time clinical demands without compromising on performance.
+                While initial development was conducted on a student-based setup, the i-UNet is inherently scalable. Plans include leveraging high-performance computing environments, GPU clusters, and optimised inference pipelines to process larger datasets and meet real-time clinical demands without compromising on performance.
               </div>
             </div>
             
@@ -661,16 +661,16 @@
                 How does the improved segmentation performance balance with computational efficiency in a production setting, and are there trade-offs that might affect deployment?
               </div>
               <div class="faq-answer">
-                The i-UNet is designed to strike an optimal balance between segmentation accuracy and computational efficiency. Its enhanced architecture ensures faster convergence and lower processing times, which is critical for production use. Nonetheless, continuous benchmarking in real-world scenarios will be essential to fine-tune performance and address any trade-offs.
+                The i-UNet is designed to strike an optimal balance between segmentation accuracy and computational efficiency. Its enhanced architecture ensures faster convergence and lower processing times, which is critical for production use. Nonetheless, continuous testing in real-world scenarios will be essential to fine-tune performance and address the balance between the trade-offs.
               </div>
             </div>
             
             <div class="faq-item">
               <div class="faq-question">
-                What plans are in place for implementing user-friendly interfaces (such as Grad-CAM visualizations) that allow clinicians to interpret the model's decision-making process and build trust in its outputs?
+                What plans are in place for implementing user-friendly interfaces (such as Grad-CAM visualisations) that allow clinicians to interpret the model's decision-making process and build trust in its outputs?
               </div>
               <div class="faq-answer">
-                We are developing intuitive visualisation tools like Grad-CAM overlays that will be integrated into the segmentation platform. These interfaces will provide clear, interpretable insights into the model's decision-making process, thereby helping clinicians understand and trust the automated outcomes.
+                We are developing intuitive visualisation tools like Grad-CAM overlays for specific brain segments that will be integrated into the segmentation platform. These interfaces will provide clear, interpretable insights into the model's decision-making process, thereby helping clinicians understand and trust the automated outcomes.
               </div>
             </div>
             
@@ -679,7 +679,7 @@
                 How will manual segmentation using other software (e.g., ITK-Snap) be integrated into the evaluation process, and how will differences in user expertise be accounted for when comparing segmentation quality?
               </div>
               <div class="faq-answer">
-                Our evaluation strategy includes comparative studies using manual segmentation data from ITK-Snap, performed by both novice and experienced users. This approach will help us identify and adjust for variability due to user expertise, ensuring that our model's performance is robust and consistent across different levels of manual input.
+                Our evaluation strategy includes comparative studies using manual segmentation data from ITK-Snap/3D Slicer, performed by both novice and experienced users. This approach will help us identify and adjust for variability due to user expertise, ensuring that our model's performance is robust and consistent across different levels of manual input.
               </div>
             </div>
             
@@ -688,16 +688,7 @@
                 What are the envisioned workflows for integrating the i-UNet into existing clinical systems, and how will issues such as data privacy, interoperability, and regulatory compliance be addressed?
               </div>
               <div class="faq-answer">
-                The integration of i-UNet into clinical workflows will be modular and compliant with healthcare standards (e.g., DICOM). We are designing secure, interoperable systems that adhere to stringent data privacy protocols, including encryption and anonymization. Regulatory compliance will be ensured through rigorous testing and adherence to established industry guidelines.
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <div class="faq-question">
-                In cases of model failure or unexpected outcomes, what contingency measures are in place to ensure patient safety and maintain clinician oversight?
-              </div>
-              <div class="faq-answer">
-                We have implemented a dual-review system where automated segmentations are always cross-checked by clinical experts. Additionally, the system is equipped with fallback protocols and real-time alerts to address any unexpected model behavior promptly, ensuring continuous clinician oversight and patient safety.
+                The integration of i-UNet into clinical workflows will be modular and compliant with healthcare standards (e.g., DICOM). We intend for this algorithm to function in a secure, interoperable system which adhere to stringent data privacy protocols, including encryption and anonymisation. Regulatory compliance will be ensured through rigorous testing and adherence to established industry guidelines.
               </div>
             </div>
           </div>
